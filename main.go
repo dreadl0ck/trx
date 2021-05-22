@@ -60,7 +60,9 @@ func initTrx() {
 func main() {
 
 	flag.Parse()
-	setupOauthServer()
+
+	// TODO: add oauth support, and maybe a locally running oauth server for user management?
+	//setupOauthServer()
 
 	var (
 		// the structure that handles reloading the certificate

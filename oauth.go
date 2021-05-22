@@ -21,6 +21,7 @@ import (
 	"github.com/go-oauth2/oauth2/v4/store"
 	"log"
 	"net/http"
+	"os"
 )
 
 func setupOauthServer() {
@@ -44,9 +45,9 @@ func setupOauthServer() {
 
 	// client memory store
 	clientStore := store.NewClientStore()
-	err := clientStore.Set("000000", &models.Client{
-		ID:     "000000",
-		Secret: "999999", // TODO: pass via env?
+	err := clientStore.Set(os.Getenv("OAUTH_USER"), &models.Client{
+		ID:     os.Getenv("OAUTH_USER"),
+		Secret: os.Getenv("OAUTH_SECRET"),
 		Domain: domain,
 	})
 	if err != nil {
